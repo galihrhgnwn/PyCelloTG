@@ -1,0 +1,10 @@
+python-telegram-bot==22.2
+python-dotenv
+ytmusicapi
+g4f
+yt-dlp
+aiohttp
+aiofiles
+curl-cffi
+pillow
+requests
