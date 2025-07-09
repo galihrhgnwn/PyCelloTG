@@ -1,7 +1,14 @@
-```
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python Version">
+  <img src="https://img.shields.io/badge/Telegram%20Bot-API-success.svg" alt="Telegram Bot">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+</p>
+
+
 # 🤖 Telegram AI ChatBot with Vision Model & YouTube Song Downloader
 
-This Telegram bot is a powerful AI chatbot with support for image processing (Vision Model), per-user memory, and a `/song` command to search and download music directly from YouTube. It can be run locally or on platforms like Pterodactyl.
+This Telegram bot is a powerful AI chatbot that supports image processing (Vision Model), per-user memory, and a `/song` command to search and download music directly from YouTube. It can be run locally or hosted on platforms like Pterodactyl.
 
 ---
 
@@ -56,7 +63,7 @@ To make the `/song` command work reliably, you **must include cookies from YouTu
 
 ### How to Add YouTube Cookies:
 
-1. Visit `https://www.youtube.com` in your browser while logged in.
+1. Visit [YouTube](https://www.youtube.com) in your browser while logged in.
 2. Use a browser extension like **"Get cookies.txt"**.
 3. Save the exported cookies to the following location:
 
@@ -64,7 +71,7 @@ To make the `/song` command work reliably, you **must include cookies from YouTu
 /cookies/cookies.txt
 ```
 
-4. Make sure the file name is exactly: `cookies.txt`.
+Make sure the file is named exactly `cookies.txt`.
 
 ❗ Without these cookies, the `/song` command may fail or return incomplete results.
 
@@ -95,8 +102,8 @@ If the bot stops responding to AI chat inputs, it's likely due to a **rate limit
 │   └── clearmemory.py      # memory reset command
 ├── utils/
 │   ├── dlpsendmusic.py     # YouTube downloader
-│   ├── aisearchsong.py     # song search via AI
-│   └── extract_memory_ai.py# memory parsing utils
+│   ├── aisearchsong.py     # Song search via AI
+│   └── extract_memory_ai.py# Memory parsing utils
 ├── cookies/
 │   └── cookies.txt         # YouTube cookies file (REQUIRED)
 ├── requirements.txt        # Python dependencies
@@ -134,5 +141,3 @@ This project was developed by a **beginner developer** as a learning experience.
 So don't be surprised if there are bugs, missing features, or some messy code — the goal was to learn and experiment with Python, AI, and Telegram bots.
 
 🔓 This project is also **open source**, so feel free to explore, modify, or improve it however you like.
-
----
