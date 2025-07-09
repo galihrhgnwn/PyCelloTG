@@ -136,4 +136,3 @@ So don't be surprised if there are bugs, missing features, or some messy code â€
 ðŸ”“ This project is also **open source**, so feel free to explore, modify, or improve it however you like.
 
 ---
-```
