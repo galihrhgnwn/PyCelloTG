@@ -6,9 +6,9 @@
 </p>
 
 
-# 🤖 Telegram AI ChatBot with Vision Model & YouTube Song Downloader
+# 🤖 Telegram AI ChatBot with Vision Model & YouTube Music Song Downloader
 
-This Telegram bot is a powerful AI chatbot that supports image processing (Vision Model), per-user memory, and a `/song` command to search and download music directly from YouTube. It can be run locally or hosted on platforms like Pterodactyl.
+This Telegram bot is a powerful AI chatbot that supports image processing (Vision Model), per-user memory, and a `/song` command to search and download music directly from YouTube Music. It can be run locally or hosted on platforms like Pterodactyl.
 
 ---
 
