@@ -21,7 +21,7 @@ Output must be in pure JSON format.
 JSON keys are flexible and should adapt to the content of the message.
 Values can be full sentences if needed.
 
-If there is no meaningful info, respond with: {}
+If there is no meaningful info, respond with: {{}}
 
 Do not include any explanations, only return JSON.
 
