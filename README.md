@@ -119,11 +119,10 @@ If the bot stops responding to AI chat inputs, it's likely due to a **rate limit
 Create a `.env` file in the root directory and fill it like this:
 
 ```
-TELEGRAM_TOKEN=your_telegram_bot_token
-AI_API_KEY=your_ai_model_key_if_any
+BOT TOKEN=your_telegram_bot_token
+OWNER_ID=your_telegram_id
 ```
 
-Replace with your actual token and API keys if needed.
 
 ---
 
