@@ -20,12 +20,6 @@ This Telegram bot is a powerful AI chatbot that supports image processing (Visio
 - 💡 **Per-User Memory System**  
   Remembers user interactions privately, both in private chats and groups.
 
-- 🎵 **Command `/song`**  
-  Search and download music from YouTube (requires cookies to work 100%).
-
-- 🧹 **Command `/clearmemory`**  
-  Clears the saved memory for a user.
-
 - 🌐 **Multi-user & Group Support**  
   Works in both private and group chats with isolated memory.
 
