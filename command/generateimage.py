@@ -1,16 +1,10 @@
 # command/generateimage.py
 
-from telegram import (
-    Update,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    CallbackQuery,
-)
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from telegram.ext import ContextTypes, CallbackQueryHandler
 from g4f.client import Client
 import g4f
-import io, requests, asyncio, uuid
-import json
+import io, requests, asyncio, uuid, json
 
 command = "generateimage"
 _CB_PREFIX = "genimg"
@@ -25,11 +19,16 @@ def _cache_prompt(prompt: str) -> str:
 def _get_prompt(prompt_id: str) -> str | None:
     return _prompt_cache.get(prompt_id)
 
+def _sanitize_dimensions(width: int, height: int) -> tuple[int, int]:
+    def round_to_64(x):
+        return max(64, round(x / 64) * 64)
+    return round_to_64(width), round_to_64(height)
+
 async def _extract_dimensions(prompt: str) -> tuple[int, int]:
     client = g4f.Client(provider=g4f.Provider.Blackbox)
     messages = [
         {"role": "system", "content": "You are an assistant that helps decide ideal image dimensions."},
-        {"role": "user", "content": f"For this prompt: '{prompt}', give ideal image width and height (in pixels) to generate a high-quality image. Answer only in JSON like: {{\"width\":1024,\"height\":768}}."}
+        {"role": "user", "content": f"For this prompt: '{prompt}', give ideal image width and height (in pixels) to generate a high-quality image. Make sure both are between 256 and 2048. Respond only in JSON like: {{\"width\":1024,\"height\":768}}."}
     ]
     try:
         response = client.chat.completions.create(
@@ -41,7 +40,7 @@ async def _extract_dimensions(prompt: str) -> tuple[int, int]:
         data = json.loads(content)
         width = int(data.get("width", 512))
         height = int(data.get("height", 512))
-        return width, height
+        return _sanitize_dimensions(width, height)
     except Exception as e:
         print(f"[extract_dimensions] fallback to 512x512: {e}")
         return 512, 512
@@ -59,11 +58,10 @@ async def _generate_image_bytes(prompt: str, width: int, height: int) -> io.Byte
             width=width,
             height=height,
             enhance=True,
-            seed=uuid.uuid4().int % 100000  # randomize output
+            seed=uuid.uuid4().int % 100000
         )
 
     response = await loop.run_in_executor(None, _run)
-
     if not response or not getattr(response, "data", None):
         return None
 
@@ -90,7 +88,7 @@ async def run(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not prompt:
         await update.message.reply_text(
             "📸 Please provide an image prompt.\n"
-            "Example: /generateimage a hyperrealistic lion in the jungle"
+            "Example: /generateimage a majestic tiger running through snow"
         )
         return
 
