@@ -73,7 +73,7 @@ Make sure the file is named exactly `cookies.txt`.
 
 ## 🛑 When the AI Doesn't Respond
 
-If the bot stops responding to AI chat inputs, it's likely due to a **rate limit from the provider Pollinations via g4f (free model provider)**.
+If the bot stops responding to AI chat inputs, it's likely due to a **rate limit from the provider via g4f**.
 
 ✅ To fix this:
 
