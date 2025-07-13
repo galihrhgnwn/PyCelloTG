@@ -101,7 +101,7 @@ If the bot stops responding to AI chat inputs, it's likely due to a **rate limit
 ├── cookies/
 │   └── cookies.txt         # YouTube cookies file (REQUIRED)
 ├── requirements.txt        # Python dependencies
-├── .env                    # Environment config (TOKEN, API key)
+├── .env                    # Environment config
 ├── db.json                 # User memory store
 ├── dbgroup.json            # Group memory store
 ```
