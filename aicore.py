@@ -8,7 +8,7 @@ from PIL import Image
 class AICore:
     def __init__(self):
         # Provider vision-compatible
-        self.client = g4f.Client(provider=g4f.Provider.LMArenaBeta)
+        self.client = g4f.Client(provider=g4f.Provider.LegacyLMArena)
 
     def _build_messages(self, history: List[Dict], prompt: str, is_image: bool = False) -> List[Dict]:
         system_content = (
