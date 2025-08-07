@@ -8,7 +8,7 @@ from PIL import Image
 class AICore:
     def __init__(self):
         # Provider vision-compatible
-        self.client = g4f.Client(provider=g4f.Provider.PollinationsAI)
+        self.client = g4f.Client(provider=g4f.Provider.LMArenaBeta)
 
     def _build_messages(self, history: List[Dict], prompt: str, is_image: bool = False) -> List[Dict]:
         system_content = (
@@ -33,7 +33,7 @@ class AICore:
         messages = self._build_messages(history, prompt)
         response = self.client.chat.completions.create(
             messages=messages,
-            model="openai"  # change to another model if necessary
+            model="claude-sonnet-4-20250514"  # change to another model if necessary
         )
         return response.choices[0].message.content.strip()
 
@@ -46,7 +46,7 @@ class AICore:
             messages = self._build_messages(history, prompt, is_image=True)
             response = self.client.chat.completions.create(
                 messages=messages,
-                model="openai",  # change to another model if necessary
+                model="claude-sonnet-4-20250514",  # change to another model if necessary
                 images=images
             )
             return response.choices[0].message.content.strip()
