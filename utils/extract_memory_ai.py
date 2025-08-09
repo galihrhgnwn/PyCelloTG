@@ -2,8 +2,8 @@
 
 import g4f
 
-PROVIDER = g4f.Provider.Blackbox
-MODEL = "gpt-4o"
+PROVIDER = g4f.Provider.DeepInfra
+MODEL = "meta-llama/Llama-4-Scout-17B-16E-Instruct"
 
 def extract_memory_from_message(message: str) -> dict:
     prompt = f"""
