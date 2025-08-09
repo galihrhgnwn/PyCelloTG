@@ -44,7 +44,6 @@ class AICore:
             "provider": "DeepInfra",
             "model": self.model_name,
             "messages": messages,
-            "web_search": True,
             "temperature": 0.8,
             "max_tokens": 1500
         }
