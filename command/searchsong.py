@@ -16,7 +16,7 @@ ytmusic = YTMusic()
 async def run(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not context.args:
         await update.message.reply_text(
-            "❌ You gotta type the song name.\nExample: /searchsong let her go"
+            "❌ You gotta type the song name.\nExample: /song set fire to the rain"
         )
         return
 
