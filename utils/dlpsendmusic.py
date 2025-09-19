@@ -24,20 +24,45 @@ def is_cache_valid(filepath: str) -> bool:
 def download_audio_to_mp3(video_id: str) -> str:
     url = f"https://www.youtube.com/watch?v={video_id}"
     output_path = get_audio_path(video_id)
-    
+
     print(f"[DEBUG] Downloading: {url}")
-    
+
     # Remove old file if exists
     if os.path.exists(output_path):
         os.remove(output_path)
 
-    subprocess.run([
-        "yt-dlp", "-x", "--audio-format", "mp3",
-        "--audio-quality", "0",  # best quality
-        "--cookies", COOKIES_FILE,  # use cookies
-        "-o", output_path,
-        url
-    ], check=True)
+    try:
+        # Coba pakai library yt_dlp langsung
+        import yt_dlp
+
+        ydl_opts = {
+            "format": "bestaudio/best",
+            "extract_audio": True,
+            "audio_format": "mp3",
+            "audio_quality": 0,
+            "outtmpl": output_path,
+        }
+        if os.path.exists(COOKIES_FILE):
+            ydl_opts["cookiefile"] = COOKIES_FILE
+
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+
+    except ImportError:
+        # Kalau yt_dlp modul gak ada, fallback ke subprocess
+        print("[WARN] yt_dlp library not found, falling back to subprocess...")
+
+        cmd = [
+            "yt-dlp", "-x", "--audio-format", "mp3",
+            "--audio-quality", "0",  # best quality
+            "-o", output_path,
+            url
+        ]
+        if os.path.exists(COOKIES_FILE):
+            cmd.insert(-1, "--cookies")
+            cmd.insert(-1, COOKIES_FILE)
+
+        subprocess.run(cmd, check=True)
 
     return output_path
 
